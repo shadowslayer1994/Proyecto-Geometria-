@@ -2,19 +2,13 @@
 import tkinter as tk
 from geometria.circulo import Circulo
 from geometria.rectangulo import Rectangulo
+from geometria.punto import punto
 
-def dibujar_rectangulo(canvas, rectangulo):
-    x0 = 300
-    y0 = 100
-    x1 = x0 + rectangulo.ancho
-    y1 = y0 + rectangulo.alto
-    canvas.create_rectangle(x0, y0, x1, y1, outline="red", fill="lightcoral")
-
-def dibujar_circulo(canvas, circulo):
-    x = 100
-    y = 100
-    r = circulo.radio
-    canvas.create_oval(x - r, y - r, x + r, y + r, outline="blue", fill="lightblue")
+#def dibujar_circulo(canvas, circulo):
+ #   x = 100
+  #  y = 100
+   # r = circulo.radio
+    #canvas.create_oval(x - r, y - r, x + r, y + r, outline="blue", fill="lightblue")
 
 def dibujar_cuadrado(canvas, lado):
     x0 = 300
@@ -40,15 +34,15 @@ def main():
     canvas.pack()
 
     # Crear objetos
-    circulo = Circulo(50)
-    rectangulo = Rectangulo(150, 100)
+    circulo = Circulo( punto(300, 100), 50, "blue", "lightblue")
+    rectangulo = Rectangulo(punto(300, 200), punto(350, 250), "green", "red")
     lado_cuadrado = 100
     ancho_elipse = 150
     alto_elipse = 80
     
     # Dibujar
-    dibujar_circulo(canvas, circulo)
-    dibujar_rectangulo(canvas, rectangulo)
+    circulo.dibujar(canvas)
+    rectangulo.dibujar(canvas)
     dibujar_cuadrado(canvas, lado_cuadrado)
     dibujar_elipse(canvas, ancho_elipse, alto_elipse)
 
